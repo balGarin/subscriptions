@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-subscriptions-table
+      author: gabanet66
+      changes:
+        - createTable:
+            tableName: subscriptions
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: title
+                  type: varchar(100)
+                  constraints:
+                    unique: true
+                    nullable: true

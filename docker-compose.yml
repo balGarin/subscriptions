@@ -1,0 +1,22 @@
+services:
+  subscription-service:
+    build: .
+    container_name: subs-service
+    ports:
+      - "8080:8080"
+    depends_on:
+      - subs-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://subs-db:5432/US
+      - SPRING_DATASOURCE_USERNAME=dbuser
+      - SPRING_DATASOURCE_PASSWORD=12345
+
+  subs-db:
+    image: postgres:16.1
+    container_name: US_DB
+    ports:
+      - "6541:5432"
+    environment:
+      - POSTGRES_DB=US
+      - POSTGRES_USER=dbuser
+      - POSTGRES_PASSWORD=12345

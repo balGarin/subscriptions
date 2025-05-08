@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-users-subscriptions-table
+      author: gabanet66
+      changes:
+        - createTable:
+            tableName: users_subscriptions
+            columns:
+              - column:
+                  name: user_id
+                  type: integer
+                  constraints:
+                    foreignKeyName: users_subscriptions_fk
+                    referencedTableName: users
+                    referencedColumnNames: id
+              - column:
+                  name: subscription_id
+                  type: integer
+                  constraints:
+                    foreignKeyName: subscriptions_users_fk
+                    referencedTableName: subscriptions
+                    referencedColumnNames: id
